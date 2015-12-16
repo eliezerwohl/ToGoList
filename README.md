@@ -2,7 +2,8 @@
 
 ##General Project Summary
 
-To will enable users to make a list of places to go. Based on the selection, images around the place and wiki info will be displayed and user should be able to save his/her selection.
+To will enable users to make a list of places to go. User will input the city/country they would like to visit. Based on the selection, images around the place and wiki info will be displayed and user should be able to save his/her selection.
+
 
 ##Technologies Used
 HTML, CSS, Java Script, JQuery, AjAX
