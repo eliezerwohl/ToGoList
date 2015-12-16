@@ -14,9 +14,9 @@ To be provided
 
 ##API's Used
 
-Wiki API - http://www.mediawiki.org/wiki/API
-Flicker API - https://www.flickr.com/services/api/
-Google API for Location - https://developers.google.com/GeocodingAPI‎
+* Wiki API - http://www.mediawiki.org/wiki/API
+* Flicker API - https://www.flickr.com/services/api/
+* Google API for Location - https://developers.google.com/GeocodingAPI‎
 
 ##Trello Link 
 
