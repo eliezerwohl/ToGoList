@@ -1,23 +1,23 @@
-My Frontend Project
+#My Frontend Project
 
-General Project Summary
+##General Project Summary
 
 To will enable users to make a list of places to go. Based on the selection, images around the place and wiki info will be displayed and user should be able to save his/her selection.
 
-Technologies Used
+##Technologies Used
 HTML, CSS, Java Script, JQuery, AjAX
 
-Deployed Link
+##Deployed Link
 
 To be provided
 
-API's Used
+##API's Used
 
 Wiki API - http://www.mediawiki.org/wiki/API
 Flicker API - https://www.flickr.com/services/api/
 Google API for Location - https://developers.google.com/GeocodingAPI‎
 
-Trello Link 
+##Trello Link 
 
 - https://trello.com/b/mWlRhIy1/to-go-list
 
