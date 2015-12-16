@@ -11,7 +11,10 @@ $(document).ready(function() {
       type:"GET",
       url:googleMapApiUrl,
        success: function (response){
-        console.log(response);
+       
+        var googleGeoLocation = response.results[0].geometry.location;  
+        // first and only thing in the array of results, hence the 0 
+         console.log(googleGeoLocation);
        }
     })
    });
