@@ -11,4 +11,4 @@ var countryLower = $.map(country, function(item, index) {
     $(".countryName").html(country[countryCheck]);
 
   });
-// if country check = -1, it's not in the array.  otherwise, it's valid
+// if country check = -1, it's not in the array.  otherwise, it's a valid country
