@@ -16,6 +16,9 @@ $(document).ready(function() {
         // first and only thing in the array of results, hence the 0 
          console.log(googleGeoLocation);
        }
-    })
-   });
+    });
+
+  });
 });
+
+// new jersey {lat: 40.0583238, lng: -74.4056612}
