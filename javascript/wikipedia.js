@@ -4,7 +4,7 @@ $(document).ready(function() {
     var userInput = $("#searchInput").val();
     // var userInput = $("#searchInput").val();
     var wikipediaUrl = "https://crossorigin.me/https://en.wikipedia.org/w/api.php?action=opensearch&";
-    wikipediaUrl += "&search="+ userInput + "&format=json";
+    wikipediaUrl += "search="+ userInput + "&format=json";
 
 
 
@@ -17,7 +17,6 @@ $(document).ready(function() {
 
        }
     });
-
   });
 });
 
