@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $("#userSearch").on("click", function(e){
     e.preventDefault()
     var userInput = $("#searchInput").val();
@@ -11,14 +10,10 @@ $(document).ready(function() {
       type:"GET",
       url:googleMapApiUrl,
        success: function (response){
-       
         var googleGeoLocation = response.results[0].geometry.location;  
         // first and only thing in the array of results, hence the 0 
          console.log(googleGeoLocation);
        }
     });
-
   });
 });
-
-// new jersey {lat: 40.0583238, lng: -74.4056612}
