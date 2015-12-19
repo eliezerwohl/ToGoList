@@ -8,12 +8,12 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3" id="loginInput">
+      <div class="col-md-6 col-md-offset-3">
         <div class="jumbotron">
           <h2>Log In</h2>
             <form class="form-inline">
               <div class="form-group">
-                <div class="input-group">
+                <div class="input-group" id="userLogin">
                   <div class="input-group-addon">
                     <select class="form-control" id="loginOption">
                       <option>E-mail</option>
@@ -21,22 +21,33 @@
                     </select>
                   </div>
                   <div class="input-group-addon">
-                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="E-mail or Phone">
+                    <input type="text" class="form-control" id="loginInput" placeholder="E-mail or Phone">
                   </div>
-                  <div class="input-group-addon">
-                    <button class="btn btn-primary btn-md" role="button">Submit</button>
+                  <div class="input-group-addon">                 
+                    <button type="submit" class="btn btn-primary btn-md" id="loginSubmit">Submit</button>
                   </div>
                 </div>
-              </div>
+                  <div class="input-group-addon" id="newUserRegister">
+                    <label>E-mail ID &nbsp</label>
+                    <input type="text" class="form-control" id="eMail" placeholder="E-Mail">
+                    <br \>
+                    <label>First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                    <br \>
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    <br \><br \>
+                    <button type="submit" class="btn btn-primary btn-md" id="register">Register</button>
+                  </div>
             </form>
+            <p id="validationMessage"></p>
         </div>
       </div>
-      
     </div>
   </div>
-
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script type="text/javascript" src="javascript/userlogin.js"></script>
 </body>
 </html> 
