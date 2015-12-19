@@ -10,6 +10,7 @@ $(document).ready(function() {
     }else {
       console.log ("it's super false not country time")
       $(".validCountry").show();
+      $(".wiki, .countryName").empty();
     }
   });
 });
