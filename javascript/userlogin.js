@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-  var loginOption, loginInput, validInput=0;
+  var loginOption, loginInput, validInput=0, userExists=0;
+
+  $("#newUserRegister").hide();
 
   var myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
 
@@ -25,14 +27,44 @@ $(document).ready(function(){
 
     if (validInput === 1){
       console.log ("Login Input :"+loginInput);
-      myFBRef.set({
-        email: loginInput,
-        fName: "Chinmay",
-        lName: "Das"
-      });
-    }
 
-    //Enter validations for Phone -- Work to do 
+      var fbRefUsers = myFBRef.child("users");
+
+      fbRefUsers.orderByChild("email").on("child_added", function(snapshot) {
+        debugger;
+        var userList = snapshot.val();
+
+          console.log("inside child :"+userList.email);
+          if (userList.email === loginInput){
+            userExists = 1;
+          } 
+      });
+
+      if (userExists === 1){
+        console.log ("User Exists");
+      }else {
+        console.log("Create a new user");
+        $("#userLogin").hide();
+        $("#newUserRegister").show();
+        $("#eMail").val(loginInput);
+
+        $("#register").on("click",function(e){
+          e.preventDefault();
+
+        var fName = $("#firstName").val();
+        var lName = $("#lastName").val();
+        var eMail = $("#eMail").val();
+
+          fbRefUsers.child(fName).set({
+            email : eMail,
+            fName : fName,
+            lName : lName
+          });
+        });
+      }
+      
+    }
+ //Enter validations for Phone -- Work to do 
 
   });
 

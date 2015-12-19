@@ -13,7 +13,7 @@
           <h2>Log In</h2>
             <form class="form-inline">
               <div class="form-group">
-                <div class="input-group">
+                <div class="input-group" id="userLogin">
                   <div class="input-group-addon">
                     <select class="form-control" id="loginOption">
                       <option>E-mail</option>
@@ -27,6 +27,18 @@
                     <button type="submit" class="btn btn-primary btn-md" id="loginSubmit">Submit</button>
                   </div>
                 </div>
+                  <div class="input-group-addon" id="newUserRegister">
+                    <label>E-mail ID &nbsp</label>
+                    <input type="text" class="form-control" id="eMail" placeholder="E-Mail">
+                    <br \>
+                    <label>First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                    <br \>
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    <br \><br \>
+                    <button type="submit" class="btn btn-primary btn-md" id="register">Register</button>
+                  </div>
             </form>
             <p id="validationMessage"></p>
         </div>
