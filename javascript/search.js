@@ -4,6 +4,7 @@ $(document).ready(function() {
   userInput = $("#searchInput").val();
   e.preventDefault()
     if (countryFilter(userInput)){
+      $(".animation").empty();
       $(".validCountry").hide();
       console.log("its's super true country time");
       wiki(userInput);
@@ -11,6 +12,7 @@ $(document).ready(function() {
       console.log ("it's super false not country time")
       $(".validCountry").show();
       $(".wiki, .countryName").empty();
+
     }
   });
 });
