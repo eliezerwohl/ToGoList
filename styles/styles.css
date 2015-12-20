@@ -7,4 +7,6 @@
   color: red;
 }
 
-
+.navbar-fixed-bottom {
+ min-height:20px; 
+}
