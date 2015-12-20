@@ -1,15 +1,14 @@
 $(document).ready(function(){
 
-  var loginOption, loginInput, validInput=0, userExists=0;
-
+  var loginOption, loginInput, userExists=0;
+  var fbRefUsers;
+  
   $("#newUserRegister").hide();
-
+  
   var myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
-
-  $("#loginOption").on("focusout",function(){
-    
+  
+  $("#loginOption").on("focusout",function(){  
     loginOption = $("#loginOption").val();
-
   });
 
   $("#loginSubmit").on("click",function(e){
@@ -19,54 +18,37 @@ $(document).ready(function(){
 
     if (loginOption === "E-mail" && !validateEmail(loginInput)){
       $("#validationMessage").html("Invalid E-mail. Please enter the e-mail correctly").css("color","red");
-      validInput=0;
     }else {
       $("#validationMessage").html("");
-      validInput=1;
-    }
-
-    if (validInput === 1){
-      console.log ("Login Input :"+loginInput);
-
-      var fbRefUsers = myFBRef.child("users");
-
-      fbRefUsers.orderByChild("email").on("child_added", function(snapshot) {
-        debugger;
-        var userList = snapshot.val();
-
-          console.log("inside child :"+userList.email);
-          if (userList.email === loginInput){
-            userExists = 1;
-          } 
-      });
-
-      if (userExists === 1){
-        console.log ("User Exists");
-      }else {
-        console.log("Create a new user");
-        $("#userLogin").hide();
-        $("#newUserRegister").show();
-        $("#eMail").val(loginInput);
-
-        $("#register").on("click",function(e){
-          e.preventDefault();
-
-        var fName = $("#firstName").val();
-        var lName = $("#lastName").val();
-        var eMail = $("#eMail").val();
-
-          fbRefUsers.child(fName).set({
-            email : eMail,
-            fName : fName,
-            lName : lName
-          });
-        });
+      if(checkIfUserExists(loginInput)){
+        console.log("User Existing");
+      } else {
+        console.log("Create a new user"); //first time it comes to else not sure why ??
+        registerUser(loginInput); //Adds user to the database
       }
-      
+      $(this).load("home.html");  
     }
- //Enter validations for Phone -- Work to do 
-
   });
+
+  function registerUser(loginInput) {
+    $("#userLogin").hide();
+    $("#newUserRegister").show();
+    $("#eMail").val(loginInput);
+
+    $("#register").on("click",function(e){
+      e.preventDefault();
+
+    var fName = $("#firstName").val();
+    var lName = $("#lastName").val();
+    var eMail = $("#eMail").val();
+
+      fbRefUsers.child(fName).set({
+        eMail : eMail,
+        fName : fName,
+        lName : lName
+      });
+   });
+  }
 
   function validateEmail (email) {
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -77,4 +59,18 @@ $(document).ready(function(){
     }
   }
 
+  function checkIfUserExists (eMail) {
+    fbRefUsers = myFBRef.child("users");
+    console.log("user E-mail :"+eMail);
+    //fbRefUsers.orderByChild("eMail").equalTo(eMail).once("value", function(snapshot) {
+    fbRefUsers.orderByChild("eMail").on("child_added", function(snapshot) {
+      var userList = snapshot.val();
+      console.log(userList.eMail);
+      if(userList.eMail === eMail) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
 });
