@@ -1,8 +1,18 @@
 $(document).ready(function() {
  var userInput;
  $("#userSearch").on("click", function(e){
+    e.preventDefault()
+    userSearch();
+  });
+
+  $('input').keyup( function( e ) {
+    if(e.keyCode == 13) {
+      userSearch();
+      e.preventDefault();
+    }
+  });
+  function userSearch() {
   userInput = $("#searchInput").val();
-  e.preventDefault()
     if (countryFilter(userInput)){
       $(".animation").empty();
       $(".validCountry").hide();
@@ -12,7 +22,6 @@ $(document).ready(function() {
       console.log ("it's super false not country time")
       $(".validCountry").show();
       $(".wiki, .countryName").empty();
-
     }
-  });
+  }
 });
