@@ -20,6 +20,8 @@ $(document).ready(function() {
       wiki(userInput);
     }else {
       $(".validCountry").show();
+      $(".nameRow").hide();
+      $(".panel").hide()
       $(".wiki, .countryName").empty();
     }
   }

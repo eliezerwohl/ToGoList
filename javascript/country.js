@@ -10,7 +10,9 @@ var countryLower = $.map(country, function(index) {
       return false;
     }
     else {
+      $(".nameRow").show();
       $(".countryName").html(country[countryCheck]);
+
       return true;
     }
   }
