@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $("#userSearch").on("click", function(e){
     e.preventDefault()
     var userInput = $("#searchInput").val();

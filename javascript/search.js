@@ -16,10 +16,9 @@ $(document).ready(function() {
     if (countryFilter(userInput)){
       $(".animation").empty();
       $(".validCountry").hide();
-      console.log("its's super true country time");
+      mobileCheck()
       wiki(userInput);
     }else {
-      console.log ("it's super false not country time")
       $(".validCountry").show();
       $(".wiki, .countryName").empty();
     }
