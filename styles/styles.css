@@ -1,11 +1,9 @@
 .mainContainer {
   margin-bottom: 60px;
 }
-
 .glyphicon {
 font-size:29px;
 }
-
 #searchInput{
   height:50px;
 }
@@ -13,7 +11,10 @@ font-size:29px;
   display:none;
   color: red;
 }
-
 .navbar-fixed-bottom {
- min-height:20px; 
+ min-height:30px; 
 }
+
+.btn-lg, .panel {
+  display:none;
+ }
