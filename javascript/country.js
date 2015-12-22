@@ -7,12 +7,12 @@ var countryLower = $.map(country, function(index) {
     var countryCheck = countryLower.indexOf(userInput);
     if (countryCheck === -1){
       console.log ("this is not a country!");
+      $(".btn-alert").unbind();
       return false;
     }
     else {
       $(".nameRow").show();
       $(".countryName").html(country[countryCheck]);
-
       return true;
     }
   }
