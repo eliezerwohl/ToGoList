@@ -1,22 +1,28 @@
 function mobileCheck() {
   if ($(window).innerWidth() <= 768){
-   $(".btn-lg").show()
-   $(".panel").hide()
+   $(".btn-lg").show();
+   $(".panel").hide();
   }
   else{
      $(".btn-lg").hide()
    $(".panel").show()
   }
 }
-  $("body").on("click", ".wikiButton", function(){
+function mobileBind(){
+  $(".wikiButton").on("click", function(e){
+    e.preventDefault()
   $(".wikiPanel").toggle();
 });
-    $("body").on("click", ".flightButton", function(){
+  $(".flightButton").on("click", function(e){
+    e.preventDefault()
   $(".flightPanel").toggle();
 });
 
-  $("body").on("click", ".picButton", function(){
+  $(".picButton").on("click", function(e){
+    e.preventDefault()
   $(".picPanel").toggle();
 });
-   // $(this).closest(".resultImageContainer")
-
+}
+function mobileUnbind(){  
+$("btn-alert").off("click");
+}

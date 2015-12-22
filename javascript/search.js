@@ -17,12 +17,14 @@ $(document).ready(function() {
       $(".animation").empty();
       $(".validCountry").hide();
       mobileCheck()
+       mobileBind()
       wiki(userInput);
     }else {
       $(".validCountry").show();
       $(".nameRow").hide();
       $(".panel").hide()
       $(".wiki, .countryName").empty();
+      mobileUnbind();
     }
   }
 });
