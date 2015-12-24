@@ -100,7 +100,7 @@ $(document).ready(function() {
     //console.log(name);
 
     newRow = $("<tr>");
-    searchTd = $("<td>").addClass("searchResults").apped(name);
+    searchTd = $("<td>").addClass("searchResults").append(name);
     console.log(searchTd);
     saveButton = $("<button>").addClass("btn btn-info").append("Save");
     saveTd = $("<td>").append(saveButton);
