@@ -10,6 +10,7 @@ $(document).ready(function(){
   
   $("#newUserRegister").hide();
   $("#SuccessfulLogin").hide();
+  $(".mainContainer").hide();
   
   var myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
   
@@ -69,10 +70,16 @@ $(document).ready(function(){
     //debugger;
     console.log("inside start search");
     //$(this).load("home.html");
-    console.log("Welcome "+lName+","+fName)
-    integreatWithHomePage()
-    //$("#test").val("Here is the text from Jquery").css("color","red");
-    //$("#bs-example-navbar-collapse-1 #welcomeUser").html("Welcome "+lName+","+fName);
+    console.log("Welcome "+lName+","+fName);
+    $("#userloginRow").hide();
+    $(".mainContainer").show();
+    $("#welcomeUser").html("Welcome "+fName+","+lName);
+    // //$("#test").val("Here is the text from Jquery").css("color","red");
+    // //$("#bs-example-navbar-collapse-1 #welcomeUser").html("Welcome "+lName+","+fName);
+    //   function integreatWithHomePage() {
+    //   //debugger;
+    //   $("#test").attr("Here is the text from Jquery").css("color","red");
+    //   }
   });
 
   function validateEmail (email) {
@@ -98,8 +105,5 @@ $(document).ready(function(){
       }
     });
   }
-  function integreatWithHomePage() {
-    debugger;
-    $("#test").html("Here is the text from Jquery").css("color","red");
-  }
+
 });
