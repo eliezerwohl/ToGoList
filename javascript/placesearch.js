@@ -62,10 +62,11 @@ $(document).ready(function() {
     var request = {
         location: pyrmont,
         radius: '100',
+        types:'restaurant'
         //types: 'campground|zoo|university|stadium|shopping_mall|restaurant|place_of_worship|park|museum|movie_theater'
       };
 
-      service = new google.maps.places.PlacesService($('#searchResultsDiv').get(0));
+      service = new google.maps.places.PlacesService($('#mapsDiv').get(0));
       service.nearbySearch(request, callback);
 
     function callback(results, status) {
@@ -101,14 +102,11 @@ $(document).ready(function() {
 
     newRow = $("<tr>");
     searchTd = $("<td>").addClass("searchResults").append(name);
-    console.log(searchTd);
     saveButton = $("<button>").addClass("btn btn-info").append("Save");
     saveTd = $("<td>").append(saveButton);
 
     newRow.append(searchTd).append(saveTd);
-    console.log (newRow);
     $("tbody").append(newRow);
-    console.log("After the tbody call");
   }
 
 });
