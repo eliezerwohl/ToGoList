@@ -69,7 +69,8 @@ $(document).ready(function(){
     //debugger;
     console.log("inside start search");
     //$(this).load("home.html");
-    console.log("Welcome "+lName+","+fName);
+    console.log("Welcome "+lName+","+fName)
+    integreatWithHomePage()
     //$("#test").val("Here is the text from Jquery").css("color","red");
     //$("#bs-example-navbar-collapse-1 #welcomeUser").html("Welcome "+lName+","+fName);
   });
