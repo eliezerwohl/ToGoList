@@ -100,7 +100,7 @@ $(document).ready(function() {
     saveTd = $("<td>").append(saveButton);
 
     newRow.append(searchTd).append(latTD).append(lngTD).append(saveTd);
-    console.log(newRow);
+    //console.log(newRow);
 
     $("tbody").append(newRow);
     $(".latLang").hide();
