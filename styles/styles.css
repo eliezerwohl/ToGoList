@@ -4,6 +4,12 @@
 .glyphicon {
 font-size:29px;
 }
+
+#welcomeUser{
+  color:black;
+  padding-top:15px;
+  margin-left: 10px;
+}
 #searchInput{
   height:50px;
 }
