@@ -19,6 +19,7 @@ $(document).ready(function() {
       mobileCheck()
       mobileBind()
       wiki(userInput)
+      chinmayDas();
     }else {
       $(".validCountry").show();
       $(".nameRow").hide();
