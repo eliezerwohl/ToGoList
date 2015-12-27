@@ -1,8 +1,4 @@
-$(document).ready(function() {
-
-  $("#placeSearch").on("click", function(e){
-    e.preventDefault()
-    $(".animation").hide();
+function chinmayDas() {
     $("#searchResultsDiv").show();
 
     var userInput = $("#place").val();
@@ -10,7 +6,7 @@ $(document).ready(function() {
     console.log("user input"+userInput);
     googleLocation(userInput);
 
-  });
+  }
 
   function googleLocation(location) {
     var googleMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -180,4 +176,3 @@ $(document).ready(function() {
 
     return colDiv;
   }
-});
