@@ -165,16 +165,16 @@ $(document).ready(function() {
     photoUrl += "/" + photoData.id;
     photoUrl += "_" + photoData.secret + ".jpg";
 
-    var colDiv = $("<div>").addClass("col-md-3");
+    var colDiv = $("<div>").addClass("col-md-2");
     var thumbnailDiv = $("<div>").addClass("thumbnail");
     var photoImg = $("<img>").attr("src", photoUrl);
     var captionDiv = $("<div>").addClass("caption");
-    var picTitle = $("<p>").append(photoData.title);
+    // var picTitle = $("<p>").append(photoData.title);
 
     colDiv.append(thumbnailDiv
       .append(photoImg)
       .append(captionDiv
-        .append(picTitle)
+        // .append(picTitle)
       )
     );
 
