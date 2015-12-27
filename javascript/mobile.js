@@ -18,9 +18,9 @@ function mobileBind(){
   $(".flightPanel").toggle();
 });
 
-  $(".picButton").on("click", function(e){
+  $(".placesButton").on("click", function(e){
     e.preventDefault()
-  $(".picPanel").toggle();
+  $(".placesPanel").toggle();
 });
 }
 function mobileUnbind(){  

@@ -4,7 +4,13 @@
 .glyphicon {
 font-size: 29px;
 }
-#userInput{
+
+#welcomeUser{
+  color:black;
+  padding-top:15px;
+  margin-left: 10px;
+}
+#place{
   height:50px;
 }
 .validCountry {
