@@ -1,6 +1,6 @@
 $(document).ready(function() {
  var userInput;
- $("#userSearch").on("click", function(e){
+ $("#placeSearch").on("click", function(e){
     e.preventDefault()
     userSearch();
   });
@@ -12,13 +12,13 @@ $(document).ready(function() {
     }
   });
   function userSearch() {
-  userInput = $("#searchInput").val();
+  userInput = $("#place").val();
     if (countryFilter(userInput)){
       $(".animation").empty();
       $(".validCountry").hide();
       mobileCheck()
-       mobileBind()
-      wiki(userInput);
+      mobileBind()
+      wiki(userInput)
     }else {
       $(".validCountry").show();
       $(".nameRow").hide();

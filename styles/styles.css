@@ -2,7 +2,7 @@
   margin-bottom: 50px;
 }
 .glyphicon {
-font-size:29px;
+font-size: 29px;
 }
 
 #welcomeUser{
@@ -10,7 +10,7 @@ font-size:29px;
   padding-top:15px;
   margin-left: 10px;
 }
-#searchInput{
+#place{
   height:50px;
 }
 .validCountry {
@@ -32,7 +32,24 @@ font-size:29px;
 .jumbotron {
     padding-left: 40px;
 }
+#searchResultsDiv{
+    padding-left: 80px;
+}
+.thumbnail {
+    width: 120px;
+    height: 120px;
+}
 
+/* resize images */
+.thumbnail img {
+    width: 100%;
+    height: auto;
+}
+.thumbnail p {
+    font-size: 0.7em;
+    width: 100%;
+    height: auto;
+}
 .scroll-right i {
   font-size:20px;
  position: absolute;
