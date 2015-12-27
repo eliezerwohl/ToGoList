@@ -1,8 +1,18 @@
 .mainContainer {
   margin-bottom: 50px;
 }
+
+.whereWould{
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+
+}
+.countryName {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
 .glyphicon {
-font-size:29px;
+font-size: 29px;
 }
 
 #welcomeUser{
@@ -10,7 +20,7 @@ font-size:29px;
   padding-top:15px;
   margin-left: 10px;
 }
-#searchInput{
+#place{
   height:50px;
 }
 .validCountry {
@@ -25,6 +35,10 @@ font-size:29px;
   display:none;
  }
 
+ .table,{
+  margin:0px;
+  padding:0px;
+ }
  .glyphicon-floppy-disk{
   font-size:40px;
   margin-top: 5px;  
@@ -32,7 +46,24 @@ font-size:29px;
 .jumbotron {
     padding-left: 40px;
 }
+/*#searchResultsDiv{
+    padding-left: 80px;
+}*/
+.thumbnail {
+    width: 120px;
+    height: 120px;
+}
 
+/* resize images */
+.thumbnail img {
+    height: 100%;
+    width: auto;
+}
+.thumbnail p {
+    font-size: 0.7em;
+    width: 100%;
+    height: auto;
+}
 .scroll-right i {
   font-size:20px;
  position: absolute;
