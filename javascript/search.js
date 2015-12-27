@@ -17,7 +17,7 @@ $(document).ready(function() {
       $(".animation").empty();
       $(".validCountry").hide();
       mobileCheck()
-       mobileBind()
+      mobileBind()
       wiki(userInput);
     }else {
       $(".validCountry").show();

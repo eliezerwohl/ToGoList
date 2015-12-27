@@ -39,20 +39,27 @@
       <div class="col-md-12">
         <label for="searchInput">Where would you like to go?</label>
           <div class="input-group">
-            <input type="text" input autocomplete="off" class="form-control" id="searchInput" placeholder="Please enter a country">
+            <input type="text" input autocomplete="off" class="form-control" id="place" placeholder="Please enter a country or a place to go">
             <span class="input-group-btn">
-              <button type="submit" class="btn btn-default" id="userSearch">
+              <button type="submit" class="btn btn-default" id="placeSearch"> <!-- Replaced userSearch and searchInput-->
                 <span class="glyphicon glyphicon-search"> </span>
               </button>
             </span>
           </div> <!-- end input group -->    
       </div> <!-- end div col 12 -->
     </div> <!-- end row -->
+    <!-- Commented for google Search
     <div class="row">
       <div class="col-md-12">
-        <p class="validCountry"> Please enter a valid country </p>    
+        <p class="validPlace"> Please enter a country or Place to go </p>    
       </div>
+    -->
     </div> <!-- end row -->
+    <div class="row">
+      <div class="col-md-12" id="mapsDiv">
+        <div class="row" id="mapRow"></div>
+      </div> <!-- col md 12 --> 
+    </div>
     <div class="row animation">
       <div class="col-md-12">
         <div class="scroll-right">
@@ -69,7 +76,7 @@
     <div class="row nameRow">
       <div class="col-sm-9">
         <h1 class="countryName"> </h1>
-      </div> <!-- col md 10 -->
+      </div>  
       <!-- <div class="col-sm-3">
         <button type="button" class="btn btn-info btn-block">
           <h3 class="pull-left saveText">SAVE </h3>
@@ -77,6 +84,17 @@
         </button>
       </div> -->
     </div>
+      <div class="row">
+        <div class="col-sm-11" id="searchResultsDiv">
+          <table class="table table-striped table-bordered table-hover table-condensed" id="searchResultTable">
+            <thead>
+            <th colspan="2"><h1 id="searchHeader">Search Results</h1></th>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+      </div>       
+      </div>
       <div class="col-md-12">
         <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-alert btn-lg picButton btn-block">Pictures</button>
           <div class="panel panel-default picPanel">
@@ -103,7 +121,7 @@
       </div> <!-- col md 12 -->
     </div> <!-- row -->
   </div> <!-- container -->
-  <div class="container">
+  <div class="container userLoginContainer">
     <div class="row" id="userloginRow">
       <div class="col-md-6 col-md-offset-3">
         <div class="jumbotron">  
@@ -148,11 +166,12 @@
     </div>
   </div> <!-- container  -->
   <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="text-center">A site made by Chinmay Das, John Marie, Eliezer Wohl
+    <div class="text-center">A site made by Chinmay Das, Julio, Eliezer Wohl
     </div>
   </nav>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrn4c7K8kBtuWmLnKOjYE0Fih-InvjpCY&libraries=places"></script>
 <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 <script type="text/javascript" src="javascript/userlogin.js"></script>
 <script type="text/javascript" src="javascript/search.js"></script>
@@ -160,5 +179,6 @@
 <script type="text/javascript" src="javascript/wikipedia.js"></script>
 <script type="text/javascript" src="javascript/country.js"></script>
 <script type="text/javascript" src="javascript/mobile.js"></script>
+<script type="text/javascript" src="javascript/placesearch.js"></script>
 </body>
 </html>

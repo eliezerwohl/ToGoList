@@ -8,9 +8,20 @@ $(document).ready(function(){
   var loginOption, loginInput, userExists=0;
   var fbRefUsers;
   
+  // $("#newUserRegister").hide();
+  // $("#SuccessfulLogin").hide();
+  // $(".mainContainer").hide();
+  // $("#searchResultsDiv").hide();
+  // $(".animation").hide();
+
+  //just for faster search page testing 
+  $("#userLoginContainer").hide();
+  $(".mainContainer").show();
   $("#newUserRegister").hide();
   $("#SuccessfulLogin").hide();
-  $(".mainContainer").hide();
+  $(".jumbotron").hide();
+  $("#searchHeader").hide();
+  //End of Integration Code
   
   var myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
   
@@ -28,13 +39,13 @@ $(document).ready(function(){
     }else {
       $("#validationMessage").html("");
       if(checkIfUserExists(loginInput)){
-        console.log("User Existing");
+        //console.log("User Existing");
         $("#userInputForm").hide();
         $("#SuccessfulLogin").show();
         $("#validationMessage").html("Welcome <Name>. Click 'Start Search' to start your search");
       } else {
-        console.log("Create a new user"); //first time it comes to else not sure why ??
-        registerUser(loginInput); //Adds user to the database
+        //console.log("Create a new user"); //there is a bug, it asks user to login,even if the user exists.
+        registerUser(loginInput); 
       }
     }
   });
@@ -68,9 +79,9 @@ $(document).ready(function(){
 
   $("#startSearch").on("click",function(){
     //debugger;
-    console.log("inside start search");
+    //console.log("inside start search");
     //$(this).load("home.html");
-    console.log("Welcome "+lName+","+fName);
+    //console.log("Welcome "+lName+","+fName);
     $("#userloginRow").hide();
     $(".mainContainer").show();
     $("#welcomeUser").html("Welcome "+fName+","+lName);
@@ -93,11 +104,11 @@ $(document).ready(function(){
 
   function checkIfUserExists (eMail) {
     fbRefUsers = myFBRef.child("users");
-    console.log("user E-mail :"+eMail);
+    //console.log("user E-mail :"+eMail);
     //fbRefUsers.orderByChild("eMail").equalTo(eMail).once("value", function(snapshot) {
     fbRefUsers.orderByChild("eMail").on("child_added", function(snapshot) {
       var userList = snapshot.val();
-      console.log(userList.eMail);
+      //console.log(userList.eMail);
       if(userList.eMail === eMail) {
         return true;
       } else {

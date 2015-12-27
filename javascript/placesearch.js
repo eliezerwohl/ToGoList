@@ -2,8 +2,12 @@ $(document).ready(function() {
 
   $("#placeSearch").on("click", function(e){
     e.preventDefault()
+    $(".animation").hide();
+    $("#searchResultsDiv").show();
+
     var userInput = $("#place").val();
     $("tbody").empty();
+    console.log("user input"+userInput);
     googleLocation(userInput);
 
   });
@@ -42,9 +46,10 @@ $(document).ready(function() {
 
   function createPlaceList(response){
     var lat,lan;
-
     lat= response.results[0].geometry.location.lat;
     lan= response.results[0].geometry.location.lng;
+
+    //console.log("coordinates:"+lat+","+lan);
 
     var pyrmont = new google.maps.LatLng(lat,lan);
     var request = {
@@ -60,10 +65,9 @@ $(document).ready(function() {
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         //for (var i = 0; i < results.length; i++) { 
-        for (var i = 0; i < 20; i++) { //To limit search to 20 results
+        for (var i = 0; i < 10; i++) { //To limit search to 10 results
           var place = results[i];
           if (place) {
-            //console.log(place);
             createPlaceSearchResults(results[i]);
           } else {
             continue;
@@ -90,35 +94,44 @@ $(document).ready(function() {
     lat = place.geometry.location.lat();;
     lng = place.geometry.location.lng();
 
-    //console.log (lat,lng);
-
     newRow = $("<tr>");
+    
     searchTd = $("<td>").addClass("searchResults").append(name);
     latTD = $("<td>").addClass("latLang lat").append(lat);
     lngTD = $("<td>").addClass("latLang lng").append(lng);
-    saveButton = $("<button>").addClass("btn btn-info").append("Save");
-    saveTd = $("<td>").append(saveButton);
-
-    newRow.append(searchTd).append(latTD).append(lngTD).append(saveTd);
-    //console.log(newRow);
-
+    saveButton = $("<button>").addClass("btn btn-info col-md-12").append("Save");
+    saveTd = $("<td>").append(saveButton).addClass("col-md-1");
+    newRowDiv = $("<div>").addClass("col-md-12");
+    showPictures = $("<a>").addClass("showPicClass").append("Flicker Photos");
+    //moreInfoFromWiki = $("<a>").addClass("moreWikiInfo").append("More Info from Wiki");
+    newRow.append(searchTd.append(newRowDiv.append(showPictures)))
+          .append(latTD).append(lngTD).append(saveTd);
     $("tbody").append(newRow);
     $(".latLang").hide();
+    $(".infoRow").hide();
   }
 
-  $("table").on("mouseenter", ".searchResults", function() {
+  $("table").on("click", ".showPicClass", function() {
     var lat, lng;
 
-    $("#photoRow").empty();
+    $(".infoRow").hide();
+    infoRow = $("<div>").addClass("infoRow");
+    //infoHide = saveButton = $("<button>").addClass("btn btn-danger hideInfo col-md-1").append("Hide");
 
-    lat = $(this).next().text();
-    lng = $(this).next().next().text();
+    $(this).append(infoRow);
 
-    $("#wikiInfo").html($(this).text());
+    lat = $(this).parent().parent().next().text();
+    lng = $(this).parent().parent().next().next().text();
 
     callFlickerAPI(lat,lng); //Call Flicker API to get photos around that location
 
   });
+
+   // $("table").on("click", ".searchResults", function() {
+   //  debugger;
+   //  $(this).parent().hide();
+   //  $(".infoRow").slideUp();
+   // });
 
   function callFlickerAPI(lat,lng){
     var flickrApiUrl = "https://api.flickr.com/services/rest/?";
@@ -142,7 +155,7 @@ $(document).ready(function() {
     //for(var i = 0; i < locationPhotos.length; i++) {
     for(var i = 0; i < 10; i++) { //Limit to 10 Photos around the location
       var newCol = buildThumbnail(locationPhotos[i]);
-      $("#photoRow").append(newCol);
+      $(".infoRow").append(newCol);
     }
   }
 
@@ -166,7 +179,5 @@ $(document).ready(function() {
     );
 
     return colDiv;
-
   }
-
 });
