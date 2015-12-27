@@ -1,15 +1,32 @@
+window.userInfo = {
+    eMail : "",
+    fName : "",
+    lName : "" 
+};
 $(document).ready(function(){
 
-  var loginOption, loginInput, validInput=0, userExists=0;
+  var loginOption, loginInput, userExists=0;
+  var fbRefUsers;
+  
+  // $("#newUserRegister").hide();
+  // $("#SuccessfulLogin").hide();
+  // $(".mainContainer").hide();
+  // $("#searchResultsDiv").hide();
+  // $(".animation").hide();
 
+  //just for faster search page testing 
+  $("#userLoginContainer").hide();
+  $(".mainContainer").show();
   $("#newUserRegister").hide();
-
+  $("#SuccessfulLogin").hide();
+  $(".jumbotron").hide();
+  $("#searchHeader").hide();
+  //End of Integration Code
+  
   var myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
-
-  $("#loginOption").on("focusout",function(){
-    
+  
+  $("#loginOption").on("focusout",function(){  
     loginOption = $("#loginOption").val();
-
   });
 
   $("#loginSubmit").on("click",function(e){
@@ -19,53 +36,61 @@ $(document).ready(function(){
 
     if (loginOption === "E-mail" && !validateEmail(loginInput)){
       $("#validationMessage").html("Invalid E-mail. Please enter the e-mail correctly").css("color","red");
-      validInput=0;
     }else {
       $("#validationMessage").html("");
-      validInput=1;
+      if(checkIfUserExists(loginInput)){
+        //console.log("User Existing");
+        $("#userInputForm").hide();
+        $("#SuccessfulLogin").show();
+        $("#validationMessage").html("Welcome <Name>. Click 'Start Search' to start your search");
+      } else {
+        //console.log("Create a new user"); //there is a bug, it asks user to login,even if the user exists.
+        registerUser(loginInput); 
+      }
     }
+  });
 
-    if (validInput === 1){
-      console.log ("Login Input :"+loginInput);
+  function registerUser(loginInput) {
+    //var fName,lName,eMail;
 
-      var fbRefUsers = myFBRef.child("users");
+    $("#userLogin").hide();
+    $("#newUserRegister").show();
+    $("#eMail").val(loginInput);
 
-      fbRefUsers.orderByChild("email").on("child_added", function(snapshot) {
-        debugger;
-        var userList = snapshot.val();
+    $("#register").on("click",function(e){
+      e.preventDefault();
 
-          console.log("inside child :"+userList.email);
-          if (userList.email === loginInput){
-            userExists = 1;
-          } 
+    fName = $("#firstName").val();
+    lName = $("#lastName").val();
+    eMail = $("#eMail").val();
+
+      fbRefUsers.child(fName).set({
+        eMail : eMail,
+        fName : fName,
+        lName : lName
       });
 
-      if (userExists === 1){
-        console.log ("User Exists");
-      }else {
-        console.log("Create a new user");
-        $("#userLogin").hide();
-        $("#newUserRegister").show();
-        $("#eMail").val(loginInput);
+      $("#userInputForm").hide();
+      $("#SuccessfulLogin").show();
+      $("#validationMessage").html("Congratulations "+fName+", your account has been successfully created.")
+       .append("Click 'Start Search' to start your search");   
+   });
+  }
 
-        $("#register").on("click",function(e){
-          e.preventDefault();
-
-        var fName = $("#firstName").val();
-        var lName = $("#lastName").val();
-        var eMail = $("#eMail").val();
-
-          fbRefUsers.child(fName).set({
-            email : eMail,
-            fName : fName,
-            lName : lName
-          });
-        });
-      }
-      
-    }
- //Enter validations for Phone -- Work to do 
-
+  $("#startSearch").on("click",function(){
+    //debugger;
+    //console.log("inside start search");
+    //$(this).load("home.html");
+    //console.log("Welcome "+lName+","+fName);
+    $("#userloginRow").hide();
+    $(".mainContainer").show();
+    $("#welcomeUser").html("Welcome "+fName+","+lName);
+    // //$("#test").val("Here is the text from Jquery").css("color","red");
+    // //$("#bs-example-navbar-collapse-1 #welcomeUser").html("Welcome "+lName+","+fName);
+    //   function integreatWithHomePage() {
+    //   //debugger;
+    //   $("#test").attr("Here is the text from Jquery").css("color","red");
+    //   }
   });
 
   function validateEmail (email) {
@@ -75,6 +100,21 @@ $(document).ready(function(){
     } else {
       return false;
     }
+  }
+
+  function checkIfUserExists (eMail) {
+    fbRefUsers = myFBRef.child("users");
+    //console.log("user E-mail :"+eMail);
+    //fbRefUsers.orderByChild("eMail").equalTo(eMail).once("value", function(snapshot) {
+    fbRefUsers.orderByChild("eMail").on("child_added", function(snapshot) {
+      var userList = snapshot.val();
+      //console.log(userList.eMail);
+      if(userList.eMail === eMail) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
 });
