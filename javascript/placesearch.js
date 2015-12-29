@@ -5,7 +5,6 @@ function chinmayDas() {
 
     var userInput = $("#place").val();
     $("tbody").empty();
-    //console.log("user input"+userInput);
     googleLocation(userInput);
 
   }
@@ -114,7 +113,6 @@ function chinmayDas() {
 
       locationID = snapshot.key();
       locationName = snapshot.val().location;
-      //console.log(locationID,locationName);
       createSavedResults(locationID,locationName);
     });
   });
@@ -130,7 +128,7 @@ function chinmayDas() {
     deleteButton = $("<button>").addClass("btn btn-danger deleteSearch col-md-12").append("Delete");
     deleteTd = $("<td>").append(deleteButton).addClass("col-md-1");
     newRow.append(locationIDTd).append(locationName).append(deleteTd);
-    console.log(newRow);
+    //console.log(newRow);
     //debugger;
     $("tbody").append(newRow);
     $(".infoRow").hide();
@@ -155,16 +153,9 @@ function chinmayDas() {
   $("table").on("click",".deleteSearch",function(){
     var keyTobeRemoved, dbLocation;
     keyTobeRemoved = $(this).parent().prev().prev().text();
-    console.log("key to be removed :"+keyTobeRemoved);
-
     dbLocation = "users/"+userInfo.fName+"/savedLocations/"+keyTobeRemoved;
-    console.log(dbLocation);
-
     myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
     fbRefUserSave = myFBRef.child(dbLocation);
-
-    console.log(fbRefUserSave);
-
     fbRefUserSave.remove();
     $(this).parent().parent().hide();
 
