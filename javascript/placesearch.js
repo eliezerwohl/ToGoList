@@ -1,8 +1,4 @@
-$(document).ready(function() {
-
-  $("#placeSearch").on("click", function(e){
-    e.preventDefault()
-    $(".animation").hide();
+function chinmayDas() {
     $("#searchResultsDiv").show();
     $("#searchHeader").show();
     $("tbody").empty();
@@ -12,7 +8,7 @@ $(document).ready(function() {
     //console.log("user input"+userInput);
     googleLocation(userInput);
 
-  });
+  }
 
   function googleLocation(location) {
     var googleMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -226,19 +222,18 @@ $(document).ready(function() {
     photoUrl += "/" + photoData.id;
     photoUrl += "_" + photoData.secret + ".jpg";
 
-    var colDiv = $("<div>").addClass("col-md-3");
+    var colDiv = $("<div>").addClass("col-md-2");
     var thumbnailDiv = $("<div>").addClass("thumbnail");
     var photoImg = $("<img>").attr("src", photoUrl);
     var captionDiv = $("<div>").addClass("caption");
-    var picTitle = $("<p>").append(photoData.title);
+    // var picTitle = $("<p>").append(photoData.title);
 
     colDiv.append(thumbnailDiv
       .append(photoImg)
       .append(captionDiv
-        .append(picTitle)
+        // .append(picTitle)
       )
     );
 
     return colDiv;
   }
-});
