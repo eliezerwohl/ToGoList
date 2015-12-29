@@ -4,10 +4,12 @@ $(document).ready(function() {
     e.preventDefault()
     $(".animation").hide();
     $("#searchResultsDiv").show();
+    $("#searchHeader").show();
+    $("tbody").empty();
 
     var userInput = $("#place").val();
     $("tbody").empty();
-    console.log("user input"+userInput);
+    //console.log("user input"+userInput);
     googleLocation(userInput);
 
   });
@@ -68,7 +70,7 @@ $(document).ready(function() {
         for (var i = 0; i < 10; i++) { //To limit search to 10 results
           var place = results[i];
           if (place) {
-            createPlaceSearchResults(results[i]);
+            createPlaceSearchResults(place);
           } else {
             continue;
           }         
@@ -77,21 +79,10 @@ $(document).ready(function() {
     }
   }
 
-  function googlePlacePhotos(place) {
-
-    //console.log(place.PlacePhoto);
-
-    // var locationPhotos = place.photos;
-    // for(var i = 0; i < locationPhotos.length; i++) {
-    //   var newCol = buildThumbnail(locationPhotos[i]);
-    //   $("#photosRow").append(newCol);
-    // }
-  }
   function createPlaceSearchResults(place){
     var newRow, searchTd, saveButton, saveTd,name,lat,lng;
-
     name = place.name;
-    lat = place.geometry.location.lat();;
+    lat = place.geometry.location.lat();
     lng = place.geometry.location.lng();
 
     newRow = $("<tr>");
@@ -99,18 +90,56 @@ $(document).ready(function() {
     searchTd = $("<td>").addClass("searchResults").append(name);
     latTD = $("<td>").addClass("latLang lat").append(lat);
     lngTD = $("<td>").addClass("latLang lng").append(lng);
-    saveButton = $("<button>").addClass("btn btn-info col-md-12").append("Save");
+    saveButton = $("<button>").addClass("btn btn-info saveSearch col-md-12").append("Save");
     saveTd = $("<td>").append(saveButton).addClass("col-md-1");
     newRowDiv = $("<div>").addClass("col-md-12");
     showPictures = $("<a>").addClass("showPicClass").append("Flicker Photos");
     //moreInfoFromWiki = $("<a>").addClass("moreWikiInfo").append("More Info from Wiki");
     newRow.append(searchTd.append(newRowDiv.append(showPictures)))
           .append(latTD).append(lngTD).append(saveTd);
+    
     $("tbody").append(newRow);
     $(".latLang").hide();
     $(".infoRow").hide();
   }
+  $("#showSavedList").on("click",function(e){
+    var myFBRef,fbRefUserSave, fName,lat,lng;
+    $(".animation").hide();
+    $("#searchResultsDiv").show();
+    $("#searchHeader").show();
+    $("tbody").empty();
 
+    myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
+    fName = "users/"+userInfo.fName+"/savedLocations";
+    fbRefUserSave = myFBRef.child(fName);
+
+    fbRefUserSave.orderByKey().on("child_added", function(snapshot) {
+      var locationID, locationName;
+
+      locationID = snapshot.key();
+      locationName = snapshot.val().location;
+      //console.log(locationID,locationName);
+      createSavedResults(locationID,locationName);
+    });
+  });
+
+  function createSavedResults(locationID,locationName){
+    var newRow, locationIDTd,locationName,deleteButton, deleteTd;
+    
+    $("#searchHeader").html("Saved Places");
+    newRow = $("<tr>").addClass("savedRow");
+    
+    locationIDTd = $("<td>").addClass("locationID").append(locationID);
+    locationName = $("<td>").addClass("locationName").append(locationName);
+    deleteButton = $("<button>").addClass("btn btn-danger deleteSearch col-md-12").append("Delete");
+    deleteTd = $("<td>").append(deleteButton).addClass("col-md-1");
+    newRow.append(locationIDTd).append(locationName).append(deleteTd);
+    console.log(newRow);
+    //debugger;
+    $("tbody").append(newRow);
+    $(".infoRow").hide();
+    $(".locationID").hide();
+  }
   $("table").on("click", ".showPicClass", function() {
     var lat, lng;
 
@@ -127,11 +156,43 @@ $(document).ready(function() {
 
   });
 
-   // $("table").on("click", ".searchResults", function() {
-   //  debugger;
-   //  $(this).parent().hide();
-   //  $(".infoRow").slideUp();
-   // });
+  $("table").on("click",".deleteSearch",function(){
+    var keyTobeRemoved, dbLocation;
+    keyTobeRemoved = $(this).parent().prev().prev().text();
+    console.log("key to be removed :"+keyTobeRemoved);
+
+    dbLocation = "users/"+userInfo.fName+"/savedLocations/"+keyTobeRemoved;
+    console.log(dbLocation);
+
+    myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
+    fbRefUserSave = myFBRef.child(dbLocation);
+
+    console.log(fbRefUserSave);
+
+    fbRefUserSave.remove();
+    $(this).parent().parent().hide();
+
+  });
+
+  $("table").on("click", ".saveSearch", function() {
+    var myFBRef,fbRefUserSave,fName,lat,lan,locationName;
+    
+    fName = "users/"+userInfo.fName+"/savedLocations";
+    lat = $(this).parent().prev().prev().text();
+    lan = $(this).parent().prev().text();
+    locationName = $(this).parent().prev().prev().prev().text().replace("Flicker Photos","");
+
+    myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
+    fbRefUserSave = myFBRef.child(fName);
+
+    fbRefUserSave.push({
+      lat: lat,
+      lan: lan,
+      location: locationName
+    });
+    $(".savedRow").hide();
+
+  });  
 
   function callFlickerAPI(lat,lng){
     var flickrApiUrl = "https://api.flickr.com/services/rest/?";
