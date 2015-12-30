@@ -15,6 +15,7 @@ $(document).ready(function(){
   $("#searchResultsDiv").hide();
   $(".animation").hide();
   $("#showSavedList").hide();
+  $("#saveResultsDiv").hide();
 
   // //just for faster search page testing 
   // $("#userLoginContainer").hide();
@@ -75,9 +76,9 @@ $(document).ready(function(){
 
     $("#userloginRow").hide();
     $(".mainContainer").show();
-    $("#showSavedList").show();
-    $(".mainContainer").show();
+    //$("#showSavedList").show();
     $("#welcomeUser").html("Welcome "+userInfo.fName+","+userInfo.lName);
+    $("#searchResultsDiv").show();
 
   });
 

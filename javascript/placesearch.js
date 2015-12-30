@@ -1,10 +1,10 @@
 function chinmayDas() {
     $("#searchResultsDiv").show();
     $("#searchHeader").show();
+    $("#showSavedList").show();
     $("tbody").empty();
 
     var userInput = $("#place").val();
-    $("tbody").empty();
     googleLocation(userInput);
 
   }
@@ -99,9 +99,8 @@ function chinmayDas() {
   }
   $("#showSavedList").on("click",function(e){
     var myFBRef,fbRefUserSave, fName,lat,lng;
-    $(".animation").hide();
-    $("#searchResultsDiv").show();
-    $("#searchHeader").show();
+
+    $(".mainContainer").show();
     $("tbody").empty();
 
     myFBRef = new Firebase("https://intense-inferno-5737.firebaseIO.com/");
@@ -121,6 +120,7 @@ function chinmayDas() {
     var newRow, locationIDTd,locationName,deleteButton, deleteTd;
     
     $("#searchHeader").html("Saved Places");
+
     newRow = $("<tr>").addClass("savedRow");
     
     locationIDTd = $("<td>").addClass("locationID").append(locationID);
