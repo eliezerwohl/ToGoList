@@ -46,9 +46,6 @@ font-size: 29px;
 .jumbotron {
     padding-left: 40px;
 }
-/*#searchResultsDiv{
-    padding-left: 80px;
-}*/
 .thumbnail {
     width: 120px;
     height: 120px;
@@ -63,6 +60,9 @@ font-size: 29px;
     font-size: 0.7em;
     width: 100%;
     height: auto;
+}
+#showSavedList {
+  padding-left: 25px;
 }
 .scroll-right i {
   font-size:20px;
