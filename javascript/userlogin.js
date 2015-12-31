@@ -13,7 +13,7 @@ $(document).ready(function(){
   $("#SuccessfulLogin").hide();
   $(".mainContainer").hide();
   $("#searchResultsDiv").hide();
-  $(".animation").hide();
+  // $(".animation").hide();
   $("#showSavedList").hide();
   $("#saveResultsDiv").hide();
 
