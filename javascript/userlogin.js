@@ -31,14 +31,24 @@ $(document).ready(function(){
   $("#loginOption").on("focusout",function(){  
     loginOption = $("#loginOption").val();
   });
-
-  $("#loginSubmit").on("click",function(e){
+  function validateEmail(email) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(email)) {
+      console.log("yes an email")
+      return true;
+    } else {
+      console.log("not a email")
+      return false;
+    }
+  }
+  $("#loginSubmit").on("click", function(e){
     e.preventDefault();
-
     loginInput = $("#loginInput").val();
-    if (loginOption === "E-mail" && !validateEmail(loginInput)){
+    validateEmail(loginInput);
+
+    if (validateEmail(loginInput)===false){
       $("#validationMessage").html("Invalid E-mail. Please enter the e-mail correctly").css("color","red");
-    }else {
+    } else {
       $("#validationMessage").html("");
       checkIfUserExists(loginInput);
 
@@ -81,16 +91,6 @@ $(document).ready(function(){
     $("#searchResultsDiv").show();
 
   });
-
-  function validateEmail (email) {
-    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    if (filter.test(email)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   function checkIfUserExists (eMail) {
     var userList;
 

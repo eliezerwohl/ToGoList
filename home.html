@@ -28,7 +28,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
           <p id="welcomeUser"></p>
-          
           <!--   put additional navigation here -->
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -54,13 +53,6 @@
           </div> <!-- end input group -->     
       </div> <!-- end div col 12 -->
     </div> <!-- end row -->
-    <!-- Commented for google Search
-    <div class="row">
-      <div class="col-md-12">
-        <p class="validPlace"> Please enter a country or Place to go </p>    
-      </div>
-    -->
-   <!--  </div>  --><!-- end row -->
     <div class="row">
       <div class="col-md-12" id="mapsDiv">
         <div class="row" id="mapRow"></div>
@@ -88,12 +80,6 @@
       <div class="col-sm-9">
         <h1 class="countryName"> </h1>
       </div>  
-      <!-- <div class="col-sm-3">
-        <button type="button" class="btn btn-info btn-block">
-          <h3 class="pull-left saveText">SAVE </h3>
-          <span class="glyphicon glyphicon-floppy-disk pull-right"> 
-        </button>
-      </div> -->
     </div>
       <div class="col-md-12">
         <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-alert btn-lg wikiButton btn-block">Wikipedia </button>
@@ -119,34 +105,23 @@
             </div>
           </div>
       </div> <!-- col md 12 -->  
-      <div class="col-md-12">
-        <button type="button" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-alert btn-lg flightButton btn-block">Book a Flight</button>
-          <div class="panel panel-default flightPanel">
-            <div class="panel-body">
-                 <h3>Flightinfo goes here!</h3> <!-- add flight info here -->
-            </div>
-          </div>
-      </div> <!-- col md 12 -->
     </div> <!-- row -->
   </div> <!-- container -->
   <div class="container userLoginContainer">
     <div class="row" id="userloginRow">
       <div class="col-md-6 col-md-offset-3">
         <div class="jumbotron">  
-               <div id="SuccessfulLogin">
-              <p id="validationMessage"></p>
-              <button type="submit" class="btn btn-primary btn-md" id="startSearch">Start Search</button>
-            </div>            
+          <p id="validationMessage"></p>
+          <div id="SuccessfulLogin">
+            <button type="submit" class="btn btn-primary btn-md" id="startSearch">Start Search</button>
+          </div>            
           <form id="userInputForm">
             <h2 class="text-center">Log In</h2>
               <div id="userLogin">
                 <div class="col-md-3">
                   <select class="form-control" id="loginOption">
                     <option>E-mail</option>
-                    <!--
-                    <option>Phone</option>
-                    -->
-                    </select>
+                  </select>
                 </div>
                 <div class="col-md-6">
                   <input type="text" input autocomplete="off" class="form-control" id="loginInput" placeholder="E-mail">
@@ -156,18 +131,18 @@
                 </div>
               </div>
                 <div id="newUserRegister">
-                    <label>E-mail ID &nbsp</label>
-                    <input type="text" class="form-control" id="eMail" placeholder="E-Mail">
-                    <br \>
-                    <label>First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                    <br \>
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                    <br \><br \>
-                    <button type="submit" class="btn btn-primary btn-md" id="register">Register</button>
-                  </div>
+                  <label>E-mail ID &nbsp</label>
+                  <input type="text" class="form-control" id="eMail" placeholder="E-Mail">
+                  <br \>
+                  <label>First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                  <br \>
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                  <br \><br \>
+                  <button type="submit" class="btn btn-primary btn-md" id="register">Register</button>
                 </div>
+              <!-- </div> -->
           </form>
         </div> <!-- jumbotron -->
       </div> <!-- col 6 -->
