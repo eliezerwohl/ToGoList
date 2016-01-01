@@ -77,8 +77,8 @@ $(document).ready(function(){
 
       $("#userInputForm").hide();
       $("#SuccessfulLogin").show();
-      $("#validationMessage").html("Congratulations "+userInfo.fName+", your account has been successfully created.")
-       .append("Click 'Start Search' to start your search");   
+      $("#validationMessage").html("Congratulations "+userInfo.fName+", your account has been successfully created.").css("color","black")
+       .append("Click 'Start Search' to start your search").css("color","black");   
    });
   }
 
@@ -89,7 +89,6 @@ $(document).ready(function(){
     //$("#showSavedList").show();
     $("#welcomeUser").html("Welcome "+userInfo.fName+","+userInfo.lName);
     $("#searchResultsDiv").show();
-
   });
   function checkIfUserExists (eMail) {
     var userList;
@@ -105,7 +104,7 @@ $(document).ready(function(){
         $("#userInputForm").hide();
         $("#SuccessfulLogin").show();
         console.log("first Name:"+userInfo.fName); 
-        $("#validationMessage").html("Welcome Back, "+userInfo.fName+". Click 'Start Search' to start your search");
+        $("#validationMessage").html("Welcome Back, "+userInfo.fName+". Click 'Start Search' to start your search").css("color","black");
       } 
     });
 

@@ -14,6 +14,10 @@
 .glyphicon {
 font-size: 29px;
 }
+#validationMessage{
+  font-style:red;
+}
+
 /*#welcomeUser{
   color:black;
   margin:20px;
