@@ -14,12 +14,14 @@
 .glyphicon {
 font-size: 29px;
 }
-
-#welcomeUser{
+/*#welcomeUser{
   color:black;
-  padding-top:15px;
-  margin-left: 10px;
-}
+  margin:20px;
+}*/
+/*#showSavedList {
+margin:;
+color:darkblue;
+}*/
 #place{
   height:50px;
 }
@@ -35,7 +37,7 @@ font-size: 29px;
   display:none;
  }
 
- .table,{
+ .table{
   margin:0px;
   padding:0px;
  }
@@ -60,9 +62,6 @@ font-size: 29px;
     font-size: 0.7em;
     width: 100%;
     height: auto;
-}
-#showSavedList {
-  padding-left: 25px;
 }
 .scroll-right i {
   font-size:20px;

@@ -12,7 +12,6 @@
 <body>      
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="col-md-9">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -22,21 +21,14 @@
           </button>
           <a class="navbar-brand" href="#">To Go List</a>
         </div>
-      </div>
-      <div class="col-md-3">
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-          <p id="welcomeUser"></p>
+          <ul class="nav navbar-nav navbar-right">
+          <p class="navbar-text" id="welcomeUser"></p>
+          <button type="button" class="btn btn-default navbar-btn" id="showSavedList">Your Saved Searches</button>
           <!--   put additional navigation here -->
           </ul>
         </div><!-- /.navbar-collapse -->
-      </div>
-      <div class="row-fluid">
-        <div class="col-md-3 col-md-offset-9">
-          <a id="showSavedList">Your Saved Searches</a>
-        </div>
-      </div>
     </div><!-- /.container-fluid -->
   </nav>
   <div class="container mainContainer">
