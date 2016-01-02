@@ -1,11 +1,9 @@
 .mainContainer {
   margin-bottom: 50px;
 }
-
 .whereWould{
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-
 }
 .countryName {
     color: white;
@@ -17,15 +15,6 @@ font-size: 29px;
 #validationMessage{
   font-style:red;
 }
-
-/*#welcomeUser{
-  color:black;
-  margin:20px;
-}*/
-/*#showSavedList {
-margin:;
-color:darkblue;
-}*/
 #place{
   height:50px;
 }
@@ -40,7 +29,6 @@ color:darkblue;
 .btn-lg, .panel, .nameRow {
   display:none;
  }
-
  .table{
   margin:0px;
   padding:0px;
@@ -56,8 +44,6 @@ color:darkblue;
     width: 120px;
     height: 120px;
 }
-
-/* resize images */
 .thumbnail img {
     height: 100%;
     width: auto;
