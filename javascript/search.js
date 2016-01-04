@@ -1,11 +1,12 @@
 $(document).ready(function() {
  var userInput;
+  $(".animation").show();
  $("#placeSearch").on("click", function(e){
     e.preventDefault()
     userSearch();
   });
 
-  $('input').keyup( function( e ) {
+  $('#placeSearch').keyup( function( e ) {
     if(e.keyCode == 13) {
       userSearch();
       e.preventDefault();

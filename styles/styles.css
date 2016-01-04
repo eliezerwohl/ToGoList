@@ -1,11 +1,9 @@
 .mainContainer {
   margin-bottom: 50px;
 }
-
 .whereWould{
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-
 }
 .countryName {
     color: white;
@@ -14,11 +12,8 @@
 .glyphicon {
 font-size: 29px;
 }
-
-#welcomeUser{
-  color:black;
-  padding-top:15px;
-  margin-left: 10px;
+#validationMessage{
+  font-style:red;
 }
 #place{
   height:50px;
@@ -34,8 +29,7 @@ font-size: 29px;
 .btn-lg, .panel, .nameRow {
   display:none;
  }
-
- .table,{
+ .table{
   margin:0px;
   padding:0px;
  }
@@ -50,8 +44,6 @@ font-size: 29px;
     width: 120px;
     height: 120px;
 }
-
-/* resize images */
 .thumbnail img {
     height: 100%;
     width: auto;
@@ -60,9 +52,6 @@ font-size: 29px;
     font-size: 0.7em;
     width: 100%;
     height: auto;
-}
-#showSavedList {
-  padding-left: 25px;
 }
 .scroll-right i {
   font-size:20px;
