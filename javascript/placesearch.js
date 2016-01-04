@@ -6,7 +6,6 @@ function chinmayDas() {
 
     var userInput = $("#place").val();
     googleLocation(userInput);
-
   }
 
   function googleLocation(location) {
@@ -38,7 +37,6 @@ function chinmayDas() {
     //     createPlacePhotos(place);
     //   }
     // }
-
     // });
 
   function createPlaceList(response){
@@ -47,7 +45,6 @@ function chinmayDas() {
     lan= response.results[0].geometry.location.lng;
 
     //console.log("coordinates:"+lat+","+lan);
-
     var pyrmont = new google.maps.LatLng(lat,lan);
     var request = {
         location: pyrmont,
@@ -55,7 +52,6 @@ function chinmayDas() {
         //types:['restaurant']
         //types: 'campground|zoo|university|stadium|shopping_mall|restaurant|place_of_worship|park|museum|movie_theater'
       };
-
       service = new google.maps.places.PlacesService($('#mapsDiv').get(0));
       service.nearbySearch(request, callback);
 
@@ -89,7 +85,6 @@ function chinmayDas() {
     saveTd = $("<td>").append(saveButton).addClass("col-md-1");
     newRowDiv = $("<div>").addClass("col-md-12");
     showPictures = $("<a>").addClass("showPicClass").append("Flicker Photos");
-    //moreInfoFromWiki = $("<a>").addClass("moreWikiInfo").append("More Info from Wiki");
     newRow.append(searchTd.append(newRowDiv.append(showPictures)))
           .append(latTD).append(lngTD).append(saveTd);
     
@@ -128,8 +123,6 @@ function chinmayDas() {
     deleteButton = $("<button>").addClass("btn btn-danger deleteSearch col-md-12").append("Delete");
     deleteTd = $("<td>").append(deleteButton).addClass("col-md-1");
     newRow.append(locationIDTd).append(locationName).append(deleteTd);
-    //console.log(newRow);
-    //debugger;
     $("tbody").append(newRow);
     $(".infoRow").hide();
     $(".locationID").hide();
@@ -140,14 +133,11 @@ function chinmayDas() {
     $(".infoRow").hide();
     infoRow = $("<div>").addClass("infoRow");
     //infoHide = saveButton = $("<button>").addClass("btn btn-danger hideInfo col-md-1").append("Hide");
-
     $(this).append(infoRow);
-
     lat = $(this).parent().parent().next().text();
     lng = $(this).parent().parent().next().next().text();
 
     callFlickerAPI(lat,lng); //Call Flicker API to get photos around that location
-
   });
 
   $("table").on("click",".deleteSearch",function(){
@@ -158,11 +148,12 @@ function chinmayDas() {
     fbRefUserSave = myFBRef.child(dbLocation);
     fbRefUserSave.remove();
     $(this).parent().parent().hide();
-
   });
 
   $("table").on("click", ".saveSearch", function() {
     var myFBRef,fbRefUserSave,fName,lat,lan,locationName;
+
+    $(this).addClass("glyphicon glyphicon-ok").html("");
     
     fName = "users/"+userInfo.fName+"/savedLocations";
     lat = $(this).parent().prev().prev().text();
@@ -178,7 +169,6 @@ function chinmayDas() {
       location: locationName
     });
     $(".savedRow").hide();
-
   });  
 
   function callFlickerAPI(lat,lng){
@@ -218,13 +208,11 @@ function chinmayDas() {
     var photoImg = $("<img>").attr("src", photoUrl);
     var captionDiv = $("<div>").addClass("caption");
     // var picTitle = $("<p>").append(photoData.title);
-
     colDiv.append(thumbnailDiv
       .append(photoImg)
       .append(captionDiv
         // .append(picTitle)
       )
     );
-
     return colDiv;
   }
