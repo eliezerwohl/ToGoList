@@ -12,6 +12,9 @@
 .glyphicon {
 font-size: 29px;
 }
+.glyphicon-ok{
+  font-size: 20px;
+}
 #validationMessage{
   font-style:red;
 }
