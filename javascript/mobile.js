@@ -12,17 +12,17 @@ function mobileBind(){
   $(".wikiButton").on("click", function(e){
     e.preventDefault()
   $(".wikiPanel").toggle();
-});
+  });
   $(".flightButton").on("click", function(e){
     e.preventDefault()
   $(".flightPanel").toggle();
-});
+  });
 
   $(".placesButton").on("click", function(e){
     e.preventDefault()
-  $(".placesPanel").toggle();
-});
+    $(".placesPanel").toggle();
+  });
 }
 function mobileUnbind(){  
-$("btn-alert").off("click");
+  $("btn-alert").off("click");
 }

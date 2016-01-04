@@ -1,11 +1,10 @@
 $(document).ready(function() {
- var userInput;
+  var userInput;
   $(".animation").show();
- $("#placeSearch").on("click", function(e){
+  $("#placeSearch").on("click", function(e){
     e.preventDefault()
     userSearch();
   });
-
   $('#placeSearch').keyup( function( e ) {
     if(e.keyCode == 13) {
       userSearch();
@@ -13,7 +12,7 @@ $(document).ready(function() {
     }
   });
   function userSearch() {
-  userInput = $("#place").val();
+    userInput = $("#place").val();
     if (countryFilter(userInput)){
       $(".animation").empty();
       $(".validCountry").hide();
@@ -21,7 +20,8 @@ $(document).ready(function() {
       mobileBind()
       wiki(userInput)
       chinmayDas();
-    }else {
+    }
+    else {
       $(".validCountry").show();
       $(".nameRow").hide();
       $(".panel").hide()
